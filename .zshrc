@@ -113,5 +113,5 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 eval "$(~/.local/bin/mise activate zsh)"
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 alias lg=lazygit
