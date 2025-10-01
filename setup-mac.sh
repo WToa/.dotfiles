@@ -152,6 +152,60 @@ install_tig() {
     fi
 }
 
+# Install fzf
+install_fzf() {
+    if command_exists fzf; then
+        print_success "fzf is already installed"
+    else
+        print_status "Installing fzf..."
+        brew install fzf
+        print_success "fzf installed successfully"
+    fi
+}
+
+# Install eza
+install_eza() {
+    if command_exists eza; then
+        print_success "eza is already installed"
+    else
+        print_status "Installing eza..."
+        brew install eza
+        print_success "eza installed successfully"
+    fi
+}
+
+# Install zoxide
+install_zoxide() {
+    if command_exists zoxide; then
+        print_success "zoxide is already installed"
+    else
+        print_status "Installing zoxide..."
+        brew install zoxide
+        print_success "zoxide installed successfully"
+    fi
+}
+
+# Setup aliases
+setup_aliases() {
+    print_status "Setting up aliases..."
+    
+    # Add aliases to ~/.zshrc if not already present
+    if ! grep -q "alias ls='eza'" ~/.zshrc; then
+        echo "alias ls='eza'" >> ~/.zshrc
+    fi
+    
+    if ! grep -q "alias cd='z'" ~/.zshrc; then
+        echo "alias cd='z'" >> ~/.zshrc
+    fi
+    
+    # Initialize zoxide in ~/.zshrc if not present
+    if ! grep -q "eval \"\$(zoxide init zsh)\"" ~/.zshrc; then
+        echo "eval \"\$(zoxide init zsh)\"" >> ~/.zshrc
+    fi
+    
+    print_success "Aliases set up successfully"
+}
+
 # Main installation function
 main() {
     print_status "Starting macOS Development Environment Setup..."
@@ -172,6 +226,10 @@ main() {
     install_wezterm
     install_lazygit
     install_tig
+    install_fzf
+    install_eza
+    install_zoxide
+    setup_aliases
     
     print_success "All installations completed!"
     print_warning "Please restart your terminal or run 'source ~/.zshrc' to apply changes"

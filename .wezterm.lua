@@ -11,7 +11,7 @@ config.initial_cols = 120
 config.initial_rows = 28
 
 -- or, changing the font size and color scheme.
-config.font_size = 16
+config.font = wezterm.font 'Martian Mono'
 config.color_scheme = 'Solarized Dark Higher Contrast (Gogh)'
 config.window_background_opacity = 0.8
 -- Finally, return the configuration to wezterm:
